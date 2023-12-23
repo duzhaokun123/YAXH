@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    `maven-publish`
 }
 
 android {
@@ -22,15 +23,45 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         languageVersion = "2.0"
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
     compileOnly(libs.xposed.api)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "io.github.duzhaokun123"
+                artifactId = "YAXH"
+                version = "0.1.0"
+
+                from(components["release"])
+
+                pom {
+                    name = "YAXH"
+                    description = "Yet Another Xposed Helper"
+                    url = "https://github.com/duzhaokun123/YAXH"
+                    licenses {
+                        license {
+                            name = "The Apache License, Version 2.0"
+                            url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
+                        }
+                    }
+                }
+            }
+        }
+
+        repositories {
+            mavenLocal()
+        }
+    }
 }

@@ -25,16 +25,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         languageVersion = "2.0"
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 
 dependencies {
-    implementation(project(":YAXH"))
+//    implementation(project(":YAXH"))
+    implementation("io.github.duzhaokun123:YAXH:0.1.0")
     compileOnly(libs.xposed.api)
 }
