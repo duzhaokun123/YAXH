@@ -2,6 +2,7 @@ package io.github.duzhaokun123.yaxh.utils
 
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedBridge
+import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XCallback
 import java.lang.reflect.Member
 
@@ -110,4 +111,38 @@ fun Iterable<Member>.hookBeforeAfter(
     hook: BeforeAfterHook.() -> Unit,
 ): List<XC_MethodHook.Unhook> {
     return map { it.hookBeforeAfter(priority, hook) }
+}
+
+fun Class<*>.hookAllConstructor(
+    hook: XC_MethodHook,
+): List<XC_MethodHook.Unhook> {
+    return declaredConstructors.map { it.hook(hook) }
+}
+
+fun Class<*>.hookAllConstructorBefore(
+    priority: Int = XCallback.PRIORITY_DEFAULT,
+    hook: Hook,
+): List<XC_MethodHook.Unhook> {
+    return declaredConstructors.map { it.hookBefore(priority, hook) }
+}
+
+fun Class<*>.hookAllConstructorAfter(
+    priority: Int = XCallback.PRIORITY_DEFAULT,
+    hook: Hook,
+): List<XC_MethodHook.Unhook> {
+    return declaredConstructors.map { it.hookAfter(priority, hook) }
+}
+
+fun Class<*>.hookAllConstructorReplace(
+    priority: Int = XCallback.PRIORITY_DEFAULT,
+    hook: ReplaceHook,
+): List<XC_MethodHook.Unhook> {
+    return declaredConstructors.map { it.hookReplace(priority, hook) }
+}
+
+fun Class<*>.hookAllConstructorBeforeAfter(
+    priority: Int = XCallback.PRIORITY_DEFAULT,
+    hook: BeforeAfterHook.() -> Unit,
+): List<XC_MethodHook.Unhook> {
+    return declaredConstructors.map { it.hookBeforeAfter(priority, hook) }
 }

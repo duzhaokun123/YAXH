@@ -42,7 +42,7 @@ afterEvaluate {
             register<MavenPublication>("release") {
                 groupId = "io.github.duzhaokun123"
                 artifactId = "YAXH"
-                version = "0.1.0"
+                version = "0.1.0" + if (true) "-SNAPSHOT" else ""
 
                 from(components["release"])
 
