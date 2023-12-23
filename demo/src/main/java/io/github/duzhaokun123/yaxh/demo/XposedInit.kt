@@ -1,7 +1,6 @@
 package io.github.duzhaokun123.yaxh.demo
 
 import android.app.Activity
-import android.content.Intent
 import de.robv.android.xposed.IXposedHookInitPackageResources
 import de.robv.android.xposed.IXposedHookLoadPackage
 import de.robv.android.xposed.IXposedHookZygoteInit
@@ -15,14 +14,14 @@ import io.github.duzhaokun123.yaxh.utils.hookAfter
 import io.github.duzhaokun123.yaxh.utils.hookBefore
 import io.github.duzhaokun123.yaxh.utils.hookBeforeAfter
 import io.github.duzhaokun123.yaxh.utils.hookReplace
+import io.github.duzhaokun123.yaxh.utils.invoke
 import io.github.duzhaokun123.yaxh.utils.invokeMethodAutoAs
-import io.github.duzhaokun123.yaxh.utils.loadclass
+import io.github.duzhaokun123.yaxh.utils.loadClass
 import io.github.duzhaokun123.yaxh.utils.logger.ALog
 import io.github.duzhaokun123.yaxh.utils.logger.XLog
+import io.github.duzhaokun123.yaxh.utils.resultBy
 import io.github.duzhaokun123.yaxh.utils.setObject
 import io.github.duzhaokun123.yaxh.utils.showToast
-import io.github.duzhaokun123.yaxh.utils.invoke
-import io.github.duzhaokun123.yaxh.utils.resultBy
 
 class XposedInit: IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInitPackageResources {
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
@@ -41,7 +40,7 @@ class XposedInit: IXposedHookLoadPackage, IXposedHookZygoteInit, IXposedHookInit
         ALog.w("alog warn")
         ALog.e("alog error")
 
-        val class_MainActivity = loadclass("io.github.duzhaokun123.yaxh.demo.MainActivity")
+        val class_MainActivity = loadClass("io.github.duzhaokun123.yaxh.demo.MainActivity")
         class_MainActivity
             .findMethod { name == "hookme" }
             .hookReplace {
