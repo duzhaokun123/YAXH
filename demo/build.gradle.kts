@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-//    implementation(project(":YAXH"))
-    implementation("io.github.duzhaokun123:YAXH:0.1.0-SNAPSHOT")
+    implementation(project(":YAXH"))
+    //implementation("io.github.duzhaokun123:YAXH:0.1.0-SNAPSHOT")
     compileOnly(libs.xposed.api)
 }
