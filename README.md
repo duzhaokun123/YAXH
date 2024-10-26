@@ -8,11 +8,9 @@ Yet Another Xposed Helper
 
 也许有人会想从 jitpack.io 引用这个库
 
-[![](https://jitpack.io/v/duzhaokun123/YAXH.svg)](https://jitpack.io/#duzhaokun123/YAXH)
-
 ```groovy
 // 其实这个代码块是 groovy 语法
 dependencies {
-    implementation("com.github.KyuubiRan:YAXH:master-SNAPSHOT")
+    implementation("com.github.KyuubiRan:YAXH:v1.0")
 }
 ```
