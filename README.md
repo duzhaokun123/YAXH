@@ -11,6 +11,6 @@ Yet Another Xposed Helper
 ```groovy
 // 其实这个代码块是 groovy 语法
 dependencies {
-    implementation("com.github.KyuubiRan:YAXH:v1.0")
+    implementation("com.github.duzhaokun123:YAXH:v1.0")
 }
 ```
